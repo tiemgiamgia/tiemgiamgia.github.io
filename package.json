@@ -5,7 +5,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+     "uses": "actions/setup-node@v2",
+      "with": "node-version: 16.14.0",
+      "cache": "npm"
   },
   "dependencies": {
     "date-fns": "^2.30.0",
@@ -30,3 +33,4 @@
     "typescript": "5.1.3"
   }
 }
+
