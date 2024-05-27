@@ -92,11 +92,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@next.config.js:
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: "export",  // <=== enables static exports
-  reactStrictMode: true,
-};
-
-module.exports = nextConfig;
 
