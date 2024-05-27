@@ -26,3 +26,12 @@
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  basePath: "/tiengiamgia.github.io",
+  output: "export",
+  reactStrictMode: true,
+};
+
+module.exports = nextConfig;
+
