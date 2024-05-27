@@ -91,12 +91,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@next.config.js:
-
- @type {import('next').NextConfig}
-const nextConfig = {
-  basePath: 'tiengiamgia.github.io',
-  output: 'export',
-  reactStrictMode: true,
-};
-
-module.exports = nextConfig;
