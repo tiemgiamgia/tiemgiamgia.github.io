@@ -23,7 +23,6 @@
       --shadow: 0 8px 30px rgba(0,0,0,.35);
       --radius: 16px;
     }
-
     @media (prefers-color-scheme: light) {
       :root {
         --bg: #f1f5f9;
@@ -36,7 +35,6 @@
         --shadow: 0 8px 24px rgba(2,6,23,.12);
       }
     }
-
     * { box-sizing: border-box; }
     html, body {
       height: 100%;
@@ -46,14 +44,12 @@
       margin: 0;
       transition: background 0.3s ease;
     }
-
     .wrap {
       min-height: 100%;
       display: grid;
       place-items: center;
       padding: 32px 20px 48px;
     }
-
     .card {
       width: 100%;
       max-width: 720px;
@@ -65,7 +61,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .glow {
       position: absolute; inset: -40%;
       background: conic-gradient(from 180deg at 50% 50%, rgba(59,130,246,.35), rgba(16,185,129,.35), rgba(245,158,11,.35), rgba(59,130,246,.35));
@@ -73,205 +68,84 @@
       opacity: .3;
       z-index: 0;
     }
-
-    /* ========== HEADER ========== */
     header {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
       text-align: center;
       margin-bottom: 18px;
       animation: fadeIn 1s ease-out;
     }
-
-    h1 {
-      font-size: 28px;
-      margin: 0 0 6px;
-      letter-spacing: .2px;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      margin: 0;
-      font-size: 15px;
-    }
-
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-      margin-top: 10px;
-    }
-
+    h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: .2px; }
+    .subtitle { color: var(--muted); margin: 0; font-size: 15px; }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 10px; }
     .badge {
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 12px;
-      background: rgba(148,163,184,.12);
-      border: 1px solid rgba(148,163,184,.22);
+      border-radius: 999px; padding: 6px 10px; font-size: 12px;
+      background: rgba(148,163,184,.12); border: 1px solid rgba(148,163,184,.22);
     }
-
-    /* Logo trong suốt */
     .brand-logo {
       margin: 18px auto 4px;
-      width: 180px;
-      max-width: 70%;
-      height: auto;
-      display: block;
+      width: 180px; max-width: 70%;
+      height: auto; display: block;
       animation: fadeIn 1.2s ease-out;
       filter: drop-shadow(0 3px 8px rgba(0,0,0,.25));
       transition: transform 0.3s ease, filter 0.3s ease;
     }
-
-    .brand-logo:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 5px 12px rgba(0,0,0,.3));
-    }
-
-    /* ========== CONTENT ========== */
-    .bio {
-      position: relative;
-      z-index: 1;
-      margin: 10px 0 16px;
-      line-height: 1.6;
-      color: var(--text);
-    }
-
+    .brand-logo:hover { transform: scale(1.05); filter: drop-shadow(0 5px 12px rgba(0,0,0,.3)); }
+    .bio { margin: 10px 0 16px; line-height: 1.6; }
     .notice {
-      background: rgba(34,197,94,.12);
-      color: #22c55e;
-      border: 1px solid rgba(34,197,94,.3);
-      padding: 10px 12px;
-      border-radius: 12px;
-      font-size: 13px;
-      margin: 8px 0;
+      background: rgba(34,197,94,.12); color: #22c55e; border: 1px solid rgba(34,197,94,.3);
+      padding: 10px 12px; border-radius: 12px; font-size: 13px; margin: 8px 0;
     }
-
-    .links {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: 14px;
-      margin-top: 10px;
-    }
-
+    .links { display: grid; gap: 14px; margin-top: 10px; }
     .link {
-      display: grid;
-      grid-template-columns: 56px 1fr auto;
-      gap: 14px;
-      align-items: center;
+      display: grid; grid-template-columns: 56px 1fr auto; gap: 14px; align-items: center;
       background: linear-gradient(180deg, var(--btn), var(--btn-hover));
       border: 1px solid rgba(148,163,184,.25);
-      border-radius: 14px;
-      padding: 12px;
-      text-decoration: none;
-      color: var(--text);
+      border-radius: 14px; padding: 12px; text-decoration: none; color: var(--text);
       transition: transform .08s ease, border-color .2s ease;
     }
-
     .link:hover { transform: translateY(-2px); border-color: var(--accent); }
-
     .link .icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: var(--accent);
-      color: #0b1220;
-      font-size: 22px;
+      width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center;
+      background: var(--accent); color: #0b1220; font-size: 22px;
     }
-
     .link h3 { margin: 0; font-size: 16px; }
     .link p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
-
     .pill {
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,.3);
-      color: var(--text);
-      font-size: 12px;
-      opacity: .9;
+      padding: 6px 10px; border-radius: 999px;
+      border: 1px solid rgba(148,163,184,.3); color: var(--text); font-size: 12px; opacity: .9;
     }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .cta {
-      position: relative;
-      z-index: 1;
-      margin-top: 16px;
-      background: var(--accent);
-      color: #0b1220;
-      border: none;
-      padding: 14px 18px;
-      border-radius: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      width: 100%;
-      transition: transform 0.2s ease;
+      margin-top: 16px; background: var(--accent); color: #0b1220; border: none;
+      padding: 14px 18px; border-radius: 14px; font-weight: 700; cursor: pointer;
+      width: 100%; transition: transform 0.2s ease;
     }
-
     .cta:hover { transform: scale(1.02); }
-
     footer {
-      position: relative;
-      z-index: 1;
-      margin-top: 18px;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-      font-size: 12px;
+      margin-top: 18px; color: var(--muted);
+      display: flex; justify-content: space-between; gap: 12px; align-items: center;
+      flex-wrap: wrap; font-size: 12px;
     }
-
-    .socials {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
+    .socials { display: flex; gap: 10px; align-items: center; }
     .social {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      background: rgba(148,163,184,.12);
-      border: 1px solid rgba(148,163,184,.22);
-      color: var(--text);
-      text-decoration: none;
-      font-size: 16px;
-      transition: background .3s;
+      width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;
+      background: rgba(148,163,184,.12); border: 1px solid rgba(148,163,184,.22);
+      color: var(--text); text-decoration: none; font-size: 16px; transition: background .3s;
     }
-
     .social:hover { background: rgba(148,163,184,.25); }
-
     @media (max-width: 640px) {
       .grid-2 { grid-template-columns: 1fr; }
       .link { grid-template-columns: 48px 1fr auto; }
       .link .icon { width: 40px; height: 40px; }
       footer { flex-direction: column; gap: 8px; text-align: center; }
     }
-
-    /* Hiệu ứng mờ dần */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
-
 <body>
   <div class="wrap">
     <main class="card">
       <div class="glow" aria-hidden="true"></div>
-
       <header>
         <h1>Tiệm Giảm Giá</h1>
         <p class="subtitle">Mã giảm giá • Voucher • Tin khuyến mãi mỗi ngày</p>
@@ -280,7 +154,7 @@
           <span class="badge">📍 Việt Nam</span>
           <span class="badge">🔒 Link an toàn</span>
         </div>
-          </header>
+      </header>
 
       <p class="bio">
         Xin chào! Đây là trang tổng hợp liên kết chính thức của <strong>Tiệm Giảm Giá</strong>.
@@ -289,64 +163,61 @@
 
       <div class="notice">🔥 Ưu đãi hôm nay: Nhập mã <strong>GIAM30</strong> giảm 30% cho đơn hàng trên 199k.</div>
 
-      <section class="links" aria-label="Danh sách liên kết">
-        <!-- Trang chủ -->
-        <a class="link" href="https://tiemgiamgia.com" target="_blank" rel="noopener">
+      <section class="links">
+        <a class="link" href="https://tiemgiamgia.com" target="_blank">
           <div class="icon">🏷️</div>
-          <div>
-            <h3>TiemGiamGia.com</h3>
-            <p>Tổng hợp mã giảm giá, voucher HOT cập nhật liên tục.</p>
-          </div>
+          <div><h3>Trang chủ TiemGiamGia.com</h3><p>Tổng hợp mã giảm giá, voucher HOT cập nhật liên tục.</p></div>
           <span class="pill">Truy cập</span>
         </a>
 
-        <!-- ✅ Mua sắm mới thêm -->
-        <a class="link" href="https://collshp.com/tiemgiamgia" target="_blank" rel="noopener">
+        <a class="link" href="https://collshp.com/tiemgiamgia" target="_blank">
           <div class="icon">🛍️</div>
-          <div>
-            <h3>Mua Sắm</h3>
-            <p>Khám phá sản phẩm & ưu đãi đặc biệt từ Tiệm Giảm Giá.</p>
-          </div>
+          <div><h3>Mua Sắm</h3><p>Khám phá sản phẩm & ưu đãi đặc biệt từ Tiệm Giảm Giá.</p></div>
           <span class="pill">Xem ngay</span>
         </a>
 
-        <!-- Liên kết nhanh -->
         <div class="grid-2">
           <a class="link" href="https://www.facebook.com/tiemgiamgia" target="_blank">
             <div class="icon">📘</div>
-            <div>
-              <h3>Facebook Page</h3>
-              <p>Tin nhanh & quà tặng mỗi ngày.</p>
-            </div>
+            <div><h3>Facebook Page</h3><p>Tin nhanh & quà tặng mỗi ngày.</p></div>
             <span class="pill">@tiemgiamgia</span>
           </a>
-
           <a class="link" href="https://t.me/tiemgiamgia" target="_blank">
             <div class="icon">✈️</div>
-            <div>
-              <h3>Telegram Channel</h3>
-              <p>Thông báo Flash Sale cực nhanh.</p>
-            </div>
+            <div><h3>Telegram Channel</h3><p>Thông báo Flash Sale cực nhanh.</p></div>
             <span class="pill">Theo dõi</span>
           </a>
         </div>
 
         <a class="link" href="https://www.youtube.com/@TiemGiamGia" target="_blank">
           <div class="icon">▶️</div>
-          <div>
-            <h3>YouTube</h3>
-            <p>Video hướng dẫn săn deal & review sản phẩm.</p>
-          </div>
+          <div><h3>YouTube</h3><p>Video hướng dẫn săn deal & review sản phẩm.</p></div>
           <span class="pill">Subscribe</span>
         </a>
 
         <a class="link" href="https://www.tiktok.com/@tiemgiamgia" target="_blank">
           <div class="icon">🎵</div>
-          <div>
-            <h3>TikTok</h3>
-            <p>Clip ngắn mã giảm giá & mẹo mua sắm.</p>
-          </div>
+          <div><h3>TikTok</h3><p>Clip ngắn mã giảm giá & mẹo mua sắm.</p></div>
           <span class="pill">Follow</span>
+        </a>
+
+        <!-- ✅ Thêm ba liên kết mạng xã hội mới -->
+        <a class="link" href="https://instagram.com/tiemgiamgia" target="_blank">
+          <div class="icon">📸</div>
+          <div><h3>Instagram</h3><p>Ảnh deal hot, ưu đãi & sản phẩm mới mỗi ngày.</p></div>
+          <span class="pill">Theo dõi</span>
+        </a>
+
+        <a class="link" href="https://x.com/tiemgiamgia" target="_blank">
+          <div class="icon">🐦</div>
+          <div><h3>X (Twitter)</h3><p>Tin tức & mã giảm giá nhanh nhất.</p></div>
+          <span class="pill">Follow</span>
+        </a>
+
+        <a class="link" href="https://www.threads.com/tiemgiamgia" target="_blank">
+          <div class="icon">💬</div>
+          <div><h3>Threads</h3><p>Thảo luận & chia sẻ deal tốt cùng cộng đồng.</p></div>
+          <span class="pill">Xem thêm</span>
         </a>
 
         <button class="cta" type="button" onclick="copyToClipboard('https://tiemgiamgia.com')">
@@ -368,7 +239,6 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
     function copyToClipboard(text) {
       navigator.clipboard?.writeText(text).then(() => {
         const btn = document.querySelector('.cta');
