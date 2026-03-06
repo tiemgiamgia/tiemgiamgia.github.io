@@ -1,253 +1,63 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tiệm Giảm Giá — Liên kết</title>
-  <meta name="description" content="Tổng hợp liên kết & mã giảm giá từ Tiệm Giảm Giá." />
-  <meta property="og:title" content="Tiệm Giảm Giá — Liên kết" />
-  <meta property="og:description" content="Tổng hợp liên kết & mã giảm giá từ Tiệm Giảm Giá." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://tiemgiamgia.github.io/logo.png" />
-  <link rel="icon" href="logo.png">
-  <style>
-    :root {
-      --bg: #0b1220;
-      --bg-2: #0e1629;
-      --card: #111827;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: linear-gradient(135deg, #60a5fa, #34d399 48%, #f59e0b);
-      --btn: #1f2937;
-      --btn-hover: #374151;
-      --shadow: 0 8px 30px rgba(0,0,0,.35);
-      --radius: 16px;
-    }
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #f1f5f9;
-        --bg-2: #e5e7eb;
-        --card: #ffffff;
-        --text: #0f172a;
-        --muted: #475569;
-        --btn: #f1f5f9;
-        --btn-hover: #e5e7eb;
-        --shadow: 0 8px 24px rgba(2,6,23,.12);
-      }
-    }
-    * { box-sizing: border-box; }
-    html, body {
-      height: 100%;
-      font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
-      background: radial-gradient(1000px 600px at 50% -200px, rgba(99,102,241,.3), transparent 70%), var(--bg);
-      color: var(--text);
-      margin: 0;
-      transition: background 0.3s ease;
-    }
-    .wrap {
-      min-height: 100%;
-      display: grid;
-      place-items: center;
-      padding: 32px 20px 48px;
-    }
-    .card {
-      width: 100%;
-      max-width: 720px;
-      background: linear-gradient(180deg, var(--card), var(--bg-2));
-      border: 1px solid rgba(148,163,184,.15);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 28px;
-      position: relative;
-      overflow: hidden;
-    }
-    .glow {
-      position: absolute; inset: -40%;
-      background: conic-gradient(from 180deg at 50% 50%, rgba(59,130,246,.35), rgba(16,185,129,.35), rgba(245,158,11,.35), rgba(59,130,246,.35));
-      filter: blur(64px);
-      opacity: .3;
-      z-index: 0;
-    }
-    header {
-      position: relative; z-index: 1;
-      text-align: center;
-      margin-bottom: 18px;
-      animation: fadeIn 1s ease-out;
-    }
-    h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: .2px; }
-    .subtitle { color: var(--muted); margin: 0; font-size: 15px; }
-    .badges { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 10px; }
-    .badge {
-      border-radius: 999px; padding: 6px 10px; font-size: 12px;
-      background: rgba(148,163,184,.12); border: 1px solid rgba(148,163,184,.22);
-    }
-    .brand-logo {
-      margin: 18px auto 4px;
-      width: 180px; max-width: 70%;
-      height: auto; display: block;
-      animation: fadeIn 1.2s ease-out;
-      filter: drop-shadow(0 3px 8px rgba(0,0,0,.25));
-      transition: transform 0.3s ease, filter 0.3s ease;
-    }
-    .brand-logo:hover { transform: scale(1.05); filter: drop-shadow(0 5px 12px rgba(0,0,0,.3)); }
-    .bio { margin: 10px 0 16px; line-height: 1.6; }
-    .notice {
-      background: rgba(34,197,94,.12); color: #22c55e; border: 1px solid rgba(34,197,94,.3);
-      padding: 10px 12px; border-radius: 12px; font-size: 13px; margin: 8px 0;
-    }
-    .links { display: grid; gap: 14px; margin-top: 10px; }
-    .link {
-      display: grid; grid-template-columns: 56px 1fr auto; gap: 14px; align-items: center;
-      background: linear-gradient(180deg, var(--btn), var(--btn-hover));
-      border: 1px solid rgba(148,163,184,.25);
-      border-radius: 14px; padding: 12px; text-decoration: none; color: var(--text);
-      transition: transform .08s ease, border-color .2s ease;
-    }
-    .link:hover { transform: translateY(-2px); border-color: var(--accent); }
-    .link .icon {
-      width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center;
-      background: var(--accent); color: #0b1220; font-size: 22px;
-    }
-    .link h3 { margin: 0; font-size: 16px; }
-    .link p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
-    .pill {
-      padding: 6px 10px; border-radius: 999px;
-      border: 1px solid rgba(148,163,184,.3); color: var(--text); font-size: 12px; opacity: .9;
-    }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .cta {
-      margin-top: 16px; background: var(--accent); color: #0b1220; border: none;
-      padding: 14px 18px; border-radius: 14px; font-weight: 700; cursor: pointer;
-      width: 100%; transition: transform 0.2s ease;
-    }
-    .cta:hover { transform: scale(1.02); }
-    footer {
-      margin-top: 18px; color: var(--muted);
-      display: flex; justify-content: space-between; gap: 12px; align-items: center;
-      flex-wrap: wrap; font-size: 12px;
-    }
-    .socials { display: flex; gap: 10px; align-items: center; }
-    .social {
-      width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;
-      background: rgba(148,163,184,.12); border: 1px solid rgba(148,163,184,.22);
-      color: var(--text); text-decoration: none; font-size: 16px; transition: background .3s;
-    }
-    .social:hover { background: rgba(148,163,184,.25); }
-    @media (max-width: 640px) {
-      .grid-2 { grid-template-columns: 1fr; }
-      .link { grid-template-columns: 48px 1fr auto; }
-      .link .icon { width: 40px; height: 40px; }
-      footer { flex-direction: column; gap: 8px; text-align: center; }
-    }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-  </style>
+<meta charset="UTF-8">
+<title>TiemGiamGia Github</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:20px;
+}
+
+#search{
+width:100%;
+padding:10px;
+margin-bottom:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+gap:16px;
+}
+
+.card{
+border:1px solid #eee;
+padding:10px;
+}
+
+.card img{
+width:100%;
+}
+
+.pagination{
+margin-top:20px;
+}
+
+</style>
 </head>
+
 <body>
-  <div class="wrap">
-    <main class="card">
-      <div class="glow" aria-hidden="true"></div>
-      <header>
-        <h1>Tiệm Giảm Giá</h1>
-        <p class="subtitle">Mã giảm giá • Voucher • Tin khuyến mãi mỗi ngày</p>
-        <div class="badges">
-          <span class="badge">🕒 Cập nhật hàng ngày</span>
-          <span class="badge">📍 Việt Nam</span>
-          <span class="badge">🔒 Link an toàn</span>
-        </div>
-      </header>
 
-      <p class="bio">
-        Xin chào! Đây là trang tổng hợp liên kết chính thức của <strong>Tiệm Giảm Giá</strong>.
-        Bấm vào các nút bên dưới để nhận ưu đãi mới nhất, theo dõi mạng xã hội và truy cập những tiện ích hữu ích.
-      </p>
+<h1>TiemGiamGia Github</h1>
 
-      <div class="notice">🔥 Ưu đãi hôm nay: Nhập mã <strong>GIAM30</strong> giảm 30% cho đơn hàng trên 199k.</div>
+<input id="search" placeholder="Tìm sản phẩm...">
 
-      <section class="links">
-        <a class="link" href="https://tiemgiamgia.com" target="_blank">
-          <div class="icon">🏷️</div>
-          <div><h3>Trang chủ TiemGiamGia.com</h3><p>Tổng hợp mã giảm giá, voucher HOT cập nhật liên tục.</p></div>
-          <span class="pill">Truy cập</span>
-        </a>
+<div class="grid" id="products"></div>
 
-        <a class="link" href="https://collshp.com/tiemgiamgia" target="_blank">
-          <div class="icon">🛍️</div>
-          <div><h3>Mua Sắm</h3><p>Khám phá sản phẩm & ưu đãi đặc biệt từ Tiệm Giảm Giá.</p></div>
-          <span class="pill">Xem ngay</span>
-        </a>
+<div class="pagination">
 
-        <div class="grid-2">
-          <a class="link" href="https://www.facebook.com/tiemgiamgia" target="_blank">
-            <div class="icon">📘</div>
-            <div><h3>Facebook Page</h3><p>Tin nhanh & quà tặng mỗi ngày.</p></div>
-            <span class="pill">@tiemgiamgia</span>
-          </a>
-          <a class="link" href="https://t.me/tiemgiamgia" target="_blank">
-            <div class="icon">✈️</div>
-            <div><h3>Telegram Channel</h3><p>Thông báo Flash Sale cực nhanh.</p></div>
-            <span class="pill">Theo dõi</span>
-          </a>
-        </div>
+<button onclick="prev()">Prev</button>
 
-        <a class="link" href="https://www.youtube.com/@TiemGiamGia" target="_blank">
-          <div class="icon">▶️</div>
-          <div><h3>YouTube</h3><p>Video hướng dẫn săn deal & review sản phẩm.</p></div>
-          <span class="pill">Subscribe</span>
-        </a>
+<span id="pageText">1</span>
 
-        <a class="link" href="https://www.tiktok.com/@tiemgiamgia" target="_blank">
-          <div class="icon">🎵</div>
-          <div><h3>TikTok</h3><p>Clip ngắn mã giảm giá & mẹo mua sắm.</p></div>
-          <span class="pill">Follow</span>
-        </a>
+<button onclick="next()">Next</button>
 
-        <!-- ✅ Thêm ba liên kết mạng xã hội mới -->
-        <a class="link" href="https://instagram.com/tiemgiamgia" target="_blank">
-          <div class="icon">📸</div>
-          <div><h3>Instagram</h3><p>Ảnh deal hot, ưu đãi & sản phẩm mới mỗi ngày.</p></div>
-          <span class="pill">Theo dõi</span>
-        </a>
+</div>
 
-        <a class="link" href="https://x.com/tiemgiamgia" target="_blank">
-          <div class="icon">🐦</div>
-          <div><h3>X (Twitter)</h3><p>Tin tức & mã giảm giá nhanh nhất.</p></div>
-          <span class="pill">Follow</span>
-        </a>
+<script src="script.js"></script>
 
-        <a class="link" href="https://www.threads.com/tiemgiamgia" target="_blank">
-          <div class="icon">💬</div>
-          <div><h3>Threads</h3><p>Thảo luận & chia sẻ deal tốt cùng cộng đồng.</p></div>
-          <span class="pill">Xem thêm</span>
-        </a>
-
-        <button class="cta" type="button" onclick="copyToClipboard('https://tiemgiamgia.com')">
-          Sao chép liên kết trang này
-        </button>
-      </section>
-
-      <footer>
-        <div>© <span id="year"></span> Tiệm Giảm Giá • Made with ❤️</div>
-        <nav class="socials">
-          <a class="social" href="mailto:tiemgiamgia@gmail.com" title="Email">✉️</a>
-          <a class="social" href="https://facebook.com/tiemgiamgia" target="_blank">f</a>
-          <a class="social" href="https://t.me/tiemgiamgia" target="_blank">✈️</a>
-          <a class="social" href="https://www.youtube.com/@TiemGiamGia" target="_blank">▶️</a>
-        </nav>
-      </footer>
-    </main>
-  </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    function copyToClipboard(text) {
-      navigator.clipboard?.writeText(text).then(() => {
-        const btn = document.querySelector('.cta');
-        if (!btn) return;
-        const old = btn.textContent;
-        btn.textContent = '✅ Đã sao chép!';
-        setTimeout(() => (btn.textContent = old), 1400);
-      });
-    }
-  </script>
 </body>
 </html>
