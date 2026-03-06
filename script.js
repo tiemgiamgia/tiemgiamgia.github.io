@@ -6,13 +6,19 @@ let perPage=24
 
 async function loadProducts(){
 
+const urls=[]
+
 for(let i=1;i<=25;i++){
+urls.push(fetch("https://shop.tiemgiamgia.com/index/"+i+".json"))
+}
 
-const res = await fetch("https://shop.tiemgiamgia.com/index/"+i+".json")
+const responses=await Promise.all(urls)
 
-const data = await res.json()
+for(const r of responses){
 
-products = products.concat(data)
+const data=await r.json()
+
+products=products.concat(data)
 
 }
 
