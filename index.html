@@ -229,23 +229,23 @@ const params = new URLSearchParams(location.search)
 
 let path = params.get("redirect") || location.pathname
 
-if(params.get("redirect")){
-history.replaceState({}, "", path)
-}
+// làm sạch path
+path = path.replace(/^\/|\/$/g,"")
 
-if(path==="/" || path==="/index.html"){
+// nếu là trang chủ
+if(!path){
 renderHome()
 return
 }
 
-if(path.startsWith("/search")){
+// search
+if(path.startsWith("search")){
 renderSearch()
 return
 }
 
-const slug = path.replace(/^\/|\/$/g,"")
-
-renderDetail(slug)
+// render sản phẩm
+renderDetail(path)
 
 }
 
@@ -357,7 +357,13 @@ DETAIL
 
 function renderDetail(slug){
 
-const p=PRODUCTS.find(x=>x.slug===slug)
+const p = PRODUCTS.find(x => x.slug == slug)
+
+if(!p){
+console.log("Slug not found:",slug)
+renderHome()
+return
+}
 
 if(!p){
 
