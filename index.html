@@ -1,39 +1,163 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>TiemGiamGia Github</title>
+<meta name="description" content="TiemGiamGia Github - Nền tảng tổng hợp và so sánh sản phẩm từ nhiều nguồn bán hàng trực tuyến.">
 
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="TiemGiamGia Github">
+<meta property="og:description" content="Nền tảng tổng hợp và so sánh sản phẩm từ nhiều nguồn bán hàng trực tuyến.">
+<meta property="og:image" content="/logo.png">
+<meta property="og:url" content="https://shop.tiemgiamgia.com">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TiemGiamGia Github">
+<meta name="twitter:description" content="Nền tảng tổng hợp và so sánh sản phẩm từ nhiều nguồn bán hàng trực tuyến.">
+<meta name="twitter:image" content="/logo.png">
+
+<link rel="canonical" href="https://tiemgiamgia.github.io">
 <style>
 
 body{
+margin:0;
 font-family:Arial;
-margin:20px;
+background:#f6f6f6;
 }
 
-#search{
-width:100%;
+/* HEADER */
+
+header{
+background:#0ea5e9;
 padding:10px;
-margin-bottom:20px;
+position:sticky;
+top:0;
+z-index:10;
 }
 
-.grid{
+.wrap{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo{
+font-weight:bold;
+color:white;
+font-size:18px;
+text-decoration:none;
+}
+
+.wrap input{
+flex:1;
+padding:8px 10px;
+border-radius:6px;
+border:none;
+font-size:14px;
+}
+
+
+/* GRID */
+
+.products{
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-gap:16px;
+grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+gap:10px;
+padding:10px;
 }
 
 .card{
-border:1px solid #eee;
-padding:10px;
+background:white;
+border-radius:8px;
+padding:8px;
+text-decoration:none;
+color:black;
 }
 
 .card img{
 width:100%;
+height:150px;
+object-fit:cover;
+border-radius:6px;
 }
 
-.pagination{
+.card h3{
+font-size:14px;
+height:36px;
+overflow:hidden;
+}
+
+.price{
+color:#ff0000;
+font-weight:bold;
+}
+
+/* DETAIL */
+
+.detail{
+padding:15px;
+}
+
+.detail img{
+width:100%;
+max-width:400px;
+display:block;
+margin:auto;
+}
+.desc{
+white-space:pre-line;
+line-height:1.6;
+font-size:15px;
+}
+.buy{
+display:block;
+background:#ff0000;
+color:white;
+text-align:center;
+padding:12px;
+border-radius:8px;
+margin:20px 0;
+text-decoration:none;
+}
+
+.related-title{
+padding:10px;
+font-size:18px;
 margin-top:20px;
+}
+
+
+/* FOOTER */
+
+footer{
+background:#ededed;
+color:#111;
+padding:30px 15px;
+font-size:14px;
+line-height:1.6;
+}
+
+footer .links{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+margin-top:10px;
+}
+
+footer a{
+color:#111;
+text-decoration:none;
+}
+
+@media(max-width:500px){
+
+.products{
+grid-template-columns:repeat(2,1fr);
+}
+
 }
 
 </style>
@@ -41,23 +165,305 @@ margin-top:20px;
 
 <body>
 
-<h1>TiemGiamGia Github</h1>
+<header>
+<div class="wrap">
+<a class="logo" href="/">TGG</a>
+<input id="searchBox" placeholder="Tìm sản phẩm...">
+</div>
+</header>
 
-<input id="search" placeholder="Tìm sản phẩm...">
+<div id="app"></div>
 
-<div class="grid" id="products"></div>
+<footer>
 
-<div class="pagination">
+<div>© 2026 TiemGiamGia Github. All rights reserved</div>
 
-<button onclick="prev()">Prev</button>
+<p>
+TiemGiamGia Github là nền tảng tổng hợp và so sánh sản phẩm từ nhiều nguồn bán hàng trực tuyến.
+</br>
+TiemGiamGia Github không trực tiếp bán bất kỳ sản phẩm nào trên website này.
+</p>
 
-<span id="pageText">1</span>
+<div class="links">
+<a href="https://tiemgiamgia.com">Tiệm Giảm Giá</a>
+<a href="https://tiemgiamgia.com/vi/review/">Đánh Giá</a>
+<a href="https://dict.tiemgiamgia.com">Từ Điển</a>
+<a href="https://shop.tiemgiamgia.com">Đời Sống</a>
+<a href="https://sach.tiemgiamgia.com">Sách</a>
+</div>
 
-<button onclick="next()">Next</button>
+</footer>
+
+<script>
+
+/* =====================
+CONFIG
+===================== */
+
+const PER_PAGE=30
+
+let PRODUCTS=[]
+let RESULTS=[]
+let PAGE=0
+
+/* =====================
+CACHE INDEX.JSON
+===================== */
+
+async function loadData(){
+
+const res = await fetch("/index.json")
+PRODUCTS = await res.json()
+
+router()
+
+}
+
+/* =====================
+ROUTER
+===================== */
+
+function router(){
+
+const path=location.pathname
+
+if(path==="/"||path==="/index.html"){
+renderHome()
+return
+}
+
+if(path.startsWith("/search")){
+renderSearch()
+return
+}
+
+const slug=path.replaceAll("/","")
+renderDetail(slug)
+
+}
+
+/* =====================
+HOME
+===================== */
+
+function renderHome(){
+
+document.title="TiemGiamGia Github"
+
+RESULTS=PRODUCTS
+PAGE=0
+
+document.getElementById("app").innerHTML=`
+<div class="products" id="grid"></div>
+`
+
+loadMore()
+
+}
+
+/* =====================
+INFINITE SCROLL
+===================== */
+
+window.addEventListener("scroll",()=>{
+
+if(window.innerHeight+window.scrollY>=document.body.offsetHeight-200){
+
+loadMore()
+
+}
+
+})
+
+function loadMore(){
+
+const start=PAGE*PER_PAGE
+const end=start+PER_PAGE
+
+const items=RESULTS.slice(start,end)
+
+if(!items.length)return
+
+const grid=document.getElementById("grid")
+
+items.forEach(p=>{
+
+const el=document.createElement("a")
+
+el.href="/"+p.slug+"/"
+el.className="card"
+
+el.innerHTML=`
+<img loading="lazy" src="${p.image}">
+<h3>${p.title}</h3>
+<div class="price">${p.price.toLocaleString()}₫</div>
+`
+
+grid.appendChild(el)
+
+})
+
+PAGE++
+
+}
+
+/* =====================
+SEARCH FAST
+===================== */
+
+document.getElementById("searchBox").addEventListener("keypress",e=>{
+
+if(e.key==="Enter"){
+
+location.href="/search?q="+encodeURIComponent(e.target.value)
+
+}
+
+})
+
+function renderSearch(){
+
+const params=new URLSearchParams(location.search)
+
+const q=params.get("q")?.toLowerCase()||""
+
+RESULTS=PRODUCTS.filter(p=>
+p.title.toLowerCase().includes(q)
+)
+
+PAGE=0
+
+document.title="Tìm kiếm: "+q
+
+document.getElementById("app").innerHTML=`
+<h2 style="padding:10px">Kết quả: ${RESULTS.length}</h2>
+<div class="products" id="grid"></div>
+`
+
+loadMore()
+
+}
+
+/* =====================
+DETAIL
+===================== */
+
+function renderDetail(slug){
+
+const p=PRODUCTS.find(x=>x.slug===slug)
+
+if(!p){
+
+document.getElementById("app").innerHTML="<p>Không tìm thấy sản phẩm</p>"
+return
+}
+
+document.title = p.title + " | TiemGiamGia Github"
+updateMeta(p)
+
+document.getElementById("app").innerHTML=`
+
+<div class="detail">
+
+<img src="${p.image}">
+
+<h1>${p.title}</h1>
+
+<p class="price">${p.price.toLocaleString()}₫</p>
+
+<a class="buy" href="${p.affiliate}" target="_blank">
+Mua Ngay
+</a>
+
+<div class="desc">${p.desc}</div>
+
+<h2 class="related-title">Sản phẩm khác</h2>
+
+<div class="products" id="related"></div>
 
 </div>
 
-<script src="script.js"></script>
+`
+
+renderRelated(p.slug)
+
+
+}
+function renderRelated(slug){
+
+const related = PRODUCTS
+.filter(p => p.slug !== slug)
+.sort(()=>0.5-Math.random())
+.slice(0,12)
+
+const grid = document.getElementById("related")
+
+related.forEach(p=>{
+
+const el=document.createElement("a")
+
+el.href="/"+p.slug+"/"
+el.className="card"
+
+el.innerHTML=`
+<img loading="lazy" src="${p.image}">
+<h3>${p.title}</h3>
+<div class="price">${p.price.toLocaleString()}₫</div>
+`
+
+grid.appendChild(el)
+
+})
+
+}
+
+function updateMeta(p){
+
+let desc = p.desc.substring(0,160)
+
+setMeta("description",desc)
+
+setOG("og:title",p.title)
+setOG("og:description",desc)
+setOG("og:image",p.image)
+setOG("og:url",location.href)
+
+}
+
+function setMeta(name,content){
+
+let tag=document.querySelector(`meta[name="${name}"]`)
+
+if(!tag){
+tag=document.createElement("meta")
+tag.setAttribute("name",name)
+document.head.appendChild(tag)
+}
+
+tag.setAttribute("content",content)
+
+}
+
+function setOG(property,content){
+
+let tag=document.querySelector(`meta[property="${property}"]`)
+
+if(!tag){
+tag=document.createElement("meta")
+tag.setAttribute("property",property)
+document.head.appendChild(tag)
+}
+
+tag.setAttribute("content",content)
+
+}
+/* =====================
+START
+===================== */
+
+loadData()
+
+</script>
 
 </body>
 </html>
