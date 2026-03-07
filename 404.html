@@ -3,7 +3,15 @@
 <head>
 <meta charset="utf-8">
 <script>
-location.replace("/?redirect=" + location.pathname)
+
+var path = location.pathname
+
+// lưu slug
+sessionStorage.redirect = path
+
+// quay về homepage
+location.replace("/")
+
 </script>
 </head>
 </html>
