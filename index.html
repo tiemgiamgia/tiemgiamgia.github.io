@@ -225,9 +225,15 @@ ROUTER
 
 function router(){
 
-const path=location.pathname
+const params = new URLSearchParams(location.search)
 
-if(path==="/"||path==="/index.html"){
+let path = params.get("redirect") || location.pathname
+
+if(params.get("redirect")){
+history.replaceState({}, "", path)
+}
+
+if(path==="/" || path==="/index.html"){
 renderHome()
 return
 }
@@ -237,7 +243,8 @@ renderSearch()
 return
 }
 
-const slug=path.replaceAll("/","")
+const slug = path.replace(/^\/|\/$/g,"")
+
 renderDetail(slug)
 
 }
