@@ -229,22 +229,24 @@ const params = new URLSearchParams(location.search)
 
 let path = params.get("redirect") || location.pathname
 
+// nếu có redirect thì đổi URL lại cho đẹp
+if(params.get("redirect")){
+history.replaceState({}, "", path)
+}
+
 // làm sạch path
 path = path.replace(/^\/|\/$/g,"")
 
-// nếu là trang chủ
 if(!path){
 renderHome()
 return
 }
 
-// search
 if(path.startsWith("search")){
 renderSearch()
 return
 }
 
-// render sản phẩm
 renderDetail(path)
 
 }
