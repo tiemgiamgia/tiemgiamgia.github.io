@@ -215,27 +215,7 @@ async function loadData(){
 const res = await fetch("/index.json")
 PRODUCTS = await res.json()
 
-function router(){
-
-const params = new URLSearchParams(location.search)
-
-let path = params.get("redirect") || location.pathname
-
-if(path==="/"||path==="/index.html"){
-renderHome()
-return
-}
-
-if(path.startsWith("/search")){
-renderSearch()
-return
-}
-
-const slug = path.replace(/^\/|\/$/g,"")
-
-renderDetail(slug)
-
-}
+router()
 
 }
 
