@@ -378,7 +378,20 @@ function renderSearch(){
 
 const params=new URLSearchParams(location.search)
 
-const q=params.get("q")?.toLowerCase()||""
+const q=params.get("q")?.toLowerCase().trim() || ""
+
+if(!q){
+
+document.title="Tìm kiếm sản phẩm"
+
+document.getElementById("app").innerHTML=`
+<div style="padding:20px">
+<h2>Nhập từ khóa để tìm sản phẩm</h2>
+</div>
+`
+
+return
+}
 
 RESULTS=PRODUCTS.filter(p=>
 p.title.toLowerCase().includes(q)
@@ -396,7 +409,6 @@ document.getElementById("app").innerHTML=`
 loadMore()
 
 }
-
 /* =====================
 DETAIL
 ===================== */
