@@ -192,7 +192,17 @@ TiemGiamGia Github không trực tiếp bán bất kỳ sản phẩm nào trên 
 <a href="https://shop.tiemgiamgia.com">Đời Sống</a>
 <a href="https://sach.tiemgiamgia.com">Sách</a>
 </div>
-
+<div class="links">
+<a href="/gioi-thieu/">Giới thiệu</a>
+<a href="/chinh-sach-bao-mat/">Chính sách bảo mật</a>
+<a href="/dieu-khoan-su-dung/">Điều khoản sử dụng</a>
+<a href="/lien-he/">Liên hệ</a>
+</div>
+<div class="links">
+<a href="/chinh-sach-mua-hang/">Chính sách mua hàng</a>
+<a href="/chinh-sach-doi-tra/">Chính sách đổi trả</a>
+<a href="/mien-tru-trach-nhiem/">Miễn trừ trách nhiệm</a>
+</div>
 </footer>
 
 <script>
@@ -247,6 +257,40 @@ renderSearch()
 return
 }
 
+if(path==="gioi-thieu"){
+renderPage("gioi-thieu")
+return
+}
+
+if(path==="chinh-sach-bao-mat"){
+renderPage("bao-mat")
+return
+}
+
+if(path==="dieu-khoan-su-dung"){
+renderPage("dieu-khoan")
+return
+}
+
+if(path==="lien-he"){
+renderPage("lien-he")
+return
+}
+
+if(path==="chinh-sach-mua-hang"){
+renderPage("mua-hang")
+return
+}
+
+if(path==="chinh-sach-doi-tra"){
+renderPage("doi-tra")
+return
+}
+
+if(path==="mien-tru-trach-nhiem"){
+renderPage("mien-tru")
+return
+}
 renderDetail(path)
 
 }
@@ -477,6 +521,167 @@ START
 ===================== */
 
 loadData()
+
+function renderPage(type){
+
+let html=""
+
+if(type==="gioi-thieu"){
+
+document.title="Giới thiệu | TiemGiamGia"
+
+html=`
+<h1>Giới thiệu</h1>
+
+<p>
+TiemGiamGia Github là nền tảng tổng hợp và so sánh sản phẩm từ nhiều nguồn bán hàng trực tuyến
+giúp người dùng dễ dàng tìm kiếm các sản phẩm phù hợp với nhu cầu với mức giá tốt nhất.
+</p>
+
+<p>
+Chúng tôi thu thập thông tin sản phẩm từ nhiều cửa hàng và sàn thương mại điện tử,
+sau đó hiển thị lại để người dùng tiện so sánh và lựa chọn.
+</p>
+
+<p>
+TiemGiamGia Github không trực tiếp bán sản phẩm và không tham gia vào quá trình giao dịch.
+</p>
+`
+}
+
+if(type==="bao-mat"){
+
+document.title="Chính sách bảo mật"
+
+html=`
+<h1>Chính sách bảo mật</h1>
+
+<p>
+Chúng tôi tôn trọng quyền riêng tư của người dùng khi truy cập website.
+</p>
+
+<p>
+Website có thể thu thập một số thông tin cơ bản như địa chỉ IP,
+trình duyệt và dữ liệu truy cập nhằm mục đích thống kê và cải thiện dịch vụ.
+</p>
+
+<p>
+Chúng tôi không bán hoặc chia sẻ dữ liệu cá nhân cho bên thứ ba.
+</p>
+`
+}
+
+if(type==="dieu-khoan"){
+
+document.title="Điều khoản sử dụng"
+
+html=`
+<h1>Điều khoản sử dụng</h1>
+
+<p>
+Khi sử dụng website TiemGiamGia Github, bạn đồng ý với các điều khoản sử dụng sau.
+</p>
+
+<p>
+Người dùng không được sử dụng website vào các mục đích vi phạm pháp luật
+hoặc gây ảnh hưởng đến hoạt động của hệ thống.
+</p>
+
+<p>
+Chúng tôi có quyền thay đổi nội dung website bất cứ lúc nào mà không cần thông báo trước.
+</p>
+`
+}
+
+if(type==="lien-he"){
+
+document.title="Liên hệ"
+
+html=`
+<h1>Liên hệ</h1>
+
+<p>
+Nếu bạn cần hỗ trợ hoặc có câu hỏi, vui lòng liên hệ:
+</p>
+
+<p>
+Facebook: https://facebook.com/tiemgiamgia
+</p>
+
+<p>
+Website: https://tiemgiamgia.com
+</p>
+`
+}
+
+if(type==="mua-hang"){
+
+document.title="Chính sách mua hàng"
+
+html=`
+<h1>Chính sách mua hàng</h1>
+
+<p>
+TiemGiamGia Github chỉ đóng vai trò giới thiệu và tổng hợp sản phẩm từ các website bán hàng.
+</p>
+
+<p>
+Việc mua hàng được thực hiện trực tiếp tại website của nhà bán hàng thông qua các liên kết.
+</p>
+
+<p>
+Chúng tôi không xử lý thanh toán hoặc giao hàng.
+</p>
+`
+}
+
+if(type==="doi-tra"){
+
+document.title="Chính sách đổi trả"
+
+html=`
+<h1>Chính sách đổi trả</h1>
+
+<p>
+Chính sách đổi trả sản phẩm phụ thuộc vào từng nhà bán hàng.
+</p>
+
+<p>
+Người mua cần xem chi tiết chính sách đổi trả trên website của nhà bán hàng
+trước khi thực hiện giao dịch.
+</p>
+`
+}
+
+if(type==="mien-tru"){
+
+document.title="Miễn trừ trách nhiệm"
+
+html=`
+<h1>Miễn trừ trách nhiệm</h1>
+
+<p>
+Thông tin sản phẩm trên website được tổng hợp từ nhiều nguồn khác nhau
+và có thể thay đổi theo thời gian.
+</p>
+
+<p>
+Chúng tôi không đảm bảo tính chính xác tuyệt đối của tất cả thông tin sản phẩm,
+giá bán hoặc tình trạng hàng hóa.
+</p>
+
+<p>
+TiemGiamGia Github không chịu trách nhiệm cho các giao dịch được thực hiện
+trên website của bên thứ ba.
+</p>
+`
+}
+
+document.getElementById("app").innerHTML=`
+<div class="detail">${html}</div>
+`
+
+}
 
 </script>
 
