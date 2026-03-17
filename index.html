@@ -374,11 +374,18 @@ location.href="/search?q="+encodeURIComponent(e.target.value)
 
 })
 
+function normalize(s){
+return (s || "")
+.toLowerCase()
+.normalize("NFD")
+.replace(/[\u0300-\u036f]/g,"")
+}
+
 function renderSearch(){
 
-const params=new URLSearchParams(location.search)
+const params = new URLSearchParams(location.search)
 
-const q=params.get("q")?.toLowerCase().trim() || ""
+const q = params.get("q") || ""
 
 if(!q){
 
@@ -393,13 +400,15 @@ document.getElementById("app").innerHTML=`
 return
 }
 
-RESULTS=PRODUCTS.filter(p=>
-p.title.toLowerCase().includes(q)
+const keyword = normalize(q)
+
+RESULTS = PRODUCTS.filter(p =>
+normalize(p.title).includes(keyword)
 )
 
-PAGE=0
+PAGE = 0
 
-document.title="Tìm kiếm: "+q
+document.title = "Tìm kiếm: " + q
 
 document.getElementById("app").innerHTML=`
 <h2 style="padding:10px">Kết quả: ${RESULTS.length}</h2>
@@ -409,6 +418,7 @@ document.getElementById("app").innerHTML=`
 loadMore()
 
 }
+
 /* =====================
 DETAIL
 ===================== */
